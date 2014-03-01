@@ -189,6 +189,9 @@ body {
     margin: 0 0.8333333333333334%;
   }
 }
+#main {
+  float: right;
+}
 .article-date,
 .article-category-link,
 .archive-year,
