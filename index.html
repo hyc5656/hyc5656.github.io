@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
 <meta name="og:title">
-<meta name="og:url" content="http://yoursite.com/">
+<meta name="og:url" content="hyc5656.github.com/">
 <meta name="og:image">
 <meta name="og:site_name" content="博客">
 <meta name="og:description">
@@ -52,13 +52,68 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:hyc5656.github.com"></form>
       </div>
     </div>
   </div>
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-django学习1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/03/django学习1/" class="article-date">
+  <time datetime="2014-03-03T08:26:35.000Z" itemprop="datePublished">3月 3 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/03/django学习1/">django学习1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="-django">安装django</h2>
+<p>下载安装包,运行setup.py即可</p>
+<h2 id="-django-">创建django项目</h2>
+<pre><code>django-admin.py startproject 项目名
+cd 项目名/
+</code></pre><p>注意其内产生一个<em>项目名</em>的文件夹和<em>manage.py</em>，使用
+    python manage.py startapp app名</p>
+<h2 id="-">配置文件</h2>
+<p>urls.py中在patterns(&#39;&#39;,后添加
+    url(r&#39;^app/&#39;,&#39;app名.views.方法名&#39;),
+setting.py 在INSTALLED_APPS中添加app名称
+app名/views.py中添加
+    from django.http import HttpResponse</p>
+<pre><code># Create your views here.
+def index(req):
+    return HttpResponse(&#39;&lt;h1&gt;Hello,world&lt;/h1&gt;&#39;)
+</code></pre><h2 id="-">测试</h2>
+<pre><code>python manage.py runserver
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="hyc5656.github.com/2014/03/03/django学习1/" data-id="7oh1gbbodm08mp2r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-尝试的第一个博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -87,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/03/01/尝试的第一个博客/" data-id="0ag4pgkgpg57kfff" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/01/尝试的第一个博客/" data-id="b6g1xckp41upp18e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/02/28/hello-world/" data-id="zes3jbdehrimafoc" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/02/28/hello-world/" data-id="4k8fcn9ah3j314pn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -151,7 +206,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -161,6 +216,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/03/03/django学习1/">django学习1</a>
+          </li>
         
           <li>
             <a href="/2014/03/01/尝试的第一个博客/">尝试的第一个博客</a>

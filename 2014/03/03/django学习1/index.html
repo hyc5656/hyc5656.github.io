@@ -3,14 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>尝试的第一个博客 | 博客</title>
+  <title>django学习1 | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
-<meta name="og:title" content="尝试的第一个博客">
-<meta name="og:url" content="hyc5656.github.com/2014/03/01/尝试的第一个博客/">
+<meta name="og:title" content="django学习1">
+<meta name="og:url" content="hyc5656.github.com/2014/03/03/django学习1/">
 <meta name="og:image">
 <meta name="og:site_name" content="博客">
-<meta name="og:description" content="my first blog">
+<meta name="og:description" content="安装django
+下载安装包,运行setup.py即可
+创建django项目
+django-admin.py startproject 项目名
+cd 项目名/
+注意其内产生一个项目名的文件夹和manage.py，使用
+    python manage.py startapp app名
+配置文件
+urls.py中在patterns(&#39;&#39;,后添加
+    url(r&#39;^app">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="huangyuc">
   
@@ -58,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-尝试的第一个博客" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-django学习1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/03/01/尝试的第一个博客/" class="article-date">
-  <time datetime="2014-03-01T01:27:06.000Z" itemprop="datePublished">3月 1 2014</time>
+    <a href="/2014/03/03/django学习1/" class="article-date">
+  <time datetime="2014-03-03T08:26:35.000Z" itemprop="datePublished">3月 3 2014</time>
 </a>
     
   </div>
@@ -72,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      尝试的第一个博客
+      django学习1
     </h1>
   
 
@@ -80,12 +89,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>my first blog
+        <h2 id="-django">安装django</h2>
+<p>下载安装包,运行setup.py即可</p>
+<h2 id="-django-">创建django项目</h2>
+<pre><code>django-admin.py startproject 项目名
+cd 项目名/
+</code></pre><p>注意其内产生一个<em>项目名</em>的文件夹和<em>manage.py</em>，使用
+    python manage.py startapp app名</p>
+<h2 id="-">配置文件</h2>
+<p>urls.py中在patterns(&#39;&#39;,后添加
+    url(r&#39;^app/&#39;,&#39;app名.views.方法名&#39;),
+setting.py 在INSTALLED_APPS中添加app名称
+app名/views.py中添加
+    from django.http import HttpResponse</p>
+<pre><code># Create your views here.
+def index(req):
+    return HttpResponse(&#39;&lt;h1&gt;Hello,world&lt;/h1&gt;&#39;)
+</code></pre><h2 id="-">测试</h2>
+<pre><code>python manage.py runserver
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/03/01/尝试的第一个博客/" data-id="b6g1xckp41upp18e" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/03/django学习1/" data-id="7oh1gbbodm08mp2r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -94,19 +120,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/03/03/django学习1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          django学习1
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/02/28/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/03/01/尝试的第一个博客/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">尝试的第一个博客</div>
     </a>
   
 </nav>
