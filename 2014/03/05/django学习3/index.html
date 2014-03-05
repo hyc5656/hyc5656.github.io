@@ -3,22 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>django学习2 | 博客</title>
+  <title>django学习3 | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
-<meta name="og:title" content="django学习2">
-<meta name="og:url" content="hyc5656.github.com/2014/03/04/django学习2/">
+<meta name="og:title" content="django学习3">
+<meta name="og:url" content="hyc5656.github.com/2014/03/05/django学习3/">
 <meta name="og:image">
 <meta name="og:site_name" content="博客">
-<meta name="og:description" content="urls.py配置
-urls.py中的主要代码如下所示:
-    from django.conf.urls import patterns, include, url
-from django.contrib import admin
-admin.autodiscover()
-
-urlpatterns = patterns(&#39;&#39;,
-    # Examples:
-    # url">
+<meta name="og:description" content="模板创建">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="huangyuc">
   
@@ -66,10 +58,10 @@ urlpatterns = patterns(&#39;&#39;,
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-django学习2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-django学习3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/03/04/django学习2/" class="article-date">
-  <time datetime="2014-03-04T13:22:54.000Z" itemprop="datePublished">3月 4 2014</time>
+    <a href="/2014/03/05/django学习3/" class="article-date">
+  <time datetime="2014-03-05T10:37:25.000Z" itemprop="datePublished">3月 5 2014</time>
 </a>
     
   </div>
@@ -80,7 +72,7 @@ urlpatterns = patterns(&#39;&#39;,
         
   
     <h1 class="article-title" itemprop="name">
-      django学习2
+      django学习3
     </h1>
   
 
@@ -88,40 +80,12 @@ urlpatterns = patterns(&#39;&#39;,
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="urls-py-">urls.py配置</h2>
-<p>urls.py中的主要代码如下所示:
-    from django.conf.urls import patterns, include, url</p>
-<pre><code>from django.contrib import admin
-admin.autodiscover()
-
-urlpatterns = patterns(&#39;&#39;,
-    # Examples:
-    # url(r&#39;^$&#39;, &#39;site2.views.home&#39;, name=&#39;home&#39;),
-    # url(r&#39;^blog/&#39;, include(&#39;blog.urls&#39;)),
-)
-</code></pre><p>在patterns函数中添加url映射，示例以上代码已给出。其中r后字符串为url，支持正则表达式，另一个参数为对应的映射处理函数。我添加如下代码实现url不传参数和传参数的处理函数。
-    url(r&#39;^time/$&#39;,&#39;app1.views.curtime&#39;),
-    url(r&#39;^time/(\d{1,2})/&#39;,&#39;app1.views.timep&#39;),
-在views.py中的处理函数如下所示:
-    from django.shortcuts import render
-    from django.http import HttpResponse
-    import datetime</p>
-<pre><code># Create your views here.
-def curtime(req):
-    now= datetime.datetime.now()
-    html=&quot;The time is %s&quot; %now
-    return HttpResponse(html)
-def timep(req,ofs):
-    a=int(ofs)
-    now=datetime.datetime.now()+datetime.timedelta(hours=a)
-    html=&quot;In %s hours,the time will be %s&quot; % (a,now)
-    return HttpResponse(html)
-</code></pre><p>运行python manage.py runserver测试，当浏览器输入url为&quot;<a href="http://127.0.0.1:8000/time/&quot;时，结果为The" target="_blank">http://127.0.0.1:8000/time/&quot;时，结果为The</a> time is 2014-03-04 21:36:57.448569,当为&quot;<a href="http://127.0.0.1:8000/time/1/&quot;时，结果为In" target="_blank">http://127.0.0.1:8000/time/1/&quot;时，结果为In</a> 1 hours,the time will be 2014-03-04 14:39:28.640582</p>
+        <h2 id="-">模板创建</h2>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/03/04/django学习2/" data-id="xvru4y0eg2l8tw91" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/05/django学习3/" data-id="z1l4kqdsb5ulpx7r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,19 +94,10 @@ def timep(req,ofs):
     
 <nav id="article-nav">
   
-    <a href="/2014/03/05/django学习3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          django学习3
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/03/03/django学习1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/03/04/django学习2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">django学习1</div>
+      <div class="article-nav-title">django学习2</div>
     </a>
   
 </nav>
