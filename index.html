@@ -60,6 +60,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django学习5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/11/django学习5/" class="article-date">
+  <time datetime="2014-03-11T12:51:57.000Z" itemprop="datePublished">3月 11 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/11/django学习5/">django学习5</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="-">表单与数据库结合操作</h2>
+<p><strong>修改settting.py让django自动生成数据库表与模板目录等，注释里面包含csrf的一行(不注释表单提交时会有csrf错误</strong>
+<strong>在views.py中添加如下代码</strong></p>
+<pre><code>from django.shortcuts import render_to_response
+from django.http import HttpResponse,HttpResponseRedirect
+from django import forms
+from app1.models import User
+
+# Create your views here.
+class uform(forms.Form):
+    username=forms.CharField(max_length=30)
+    img=forms.FileField()
+
+def reg(req):
+    if req.method==&#39;POST&#39;:
+        uf=uform(req.POST,req.FILES)
+        if uf.is_valid():
+            user=User()
+            user.username=uf.cleaned_data[&#39;username&#39;]
+            user.img=uf.cleaned_data[&#39;img&#39;]
+            user.save()
+            return HttpResponseRedirect(r&#39;/success/&#39;)
+    else:
+        uf=uform()
+        return render_to_response(&#39;register.html&#39;,{&#39;f&#39;:uf})
+</code></pre><p>此为主要代码，其中forms模块中的Form类为django为简化表单操作而提供的，成员函数is_valid会根据设置自动检测表单类中的input标签(CharFiled对应为text或textarea等，FileField操作较为复杂，请查阅相关文档),当经过is_valid检测后可根据cleaned_data类字典获取提交的值
+<strong>当然，不使用django自带的Form类也可设计出表单，提交的值通过req.POST类字典获得</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="hyc5656.github.com/2014/03/11/django学习5/" data-id="kdandgylllckx2r3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-django学习4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/03/09/django学习4/" class="article-date">
@@ -115,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/03/09/django学习4/" data-id="zvj9epcs9gqrgauk" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/09/django学习4/" data-id="1j4jbnbkokr6lpsq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/03/05/django学习3/" data-id="u9nhertob3i2kmut" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/05/django学习3/" data-id="3qx1g8quglu6jnbn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +283,7 @@ def timep(req,ofs):
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/03/04/django学习2/" data-id="lj4q3ysweft8ozah" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/04/django学习2/" data-id="hw2oz0era4ryb56y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +338,7 @@ def index(req):
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/03/03/django学习1/" data-id="2uc510hfgvxfvc0q" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/03/django学习1/" data-id="fqfi3c44qkszahga" class="article-share-link">Share</a>
       
       
     </footer>
@@ -312,7 +376,7 @@ def index(req):
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/03/01/尝试的第一个博客/" data-id="q3p8ye9mekhmwcn6" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/01/尝试的第一个博客/" data-id="hgd1r31scpkgwr9e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +414,7 @@ def index(req):
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/02/28/hello-world/" data-id="hvei89xt2m78qtx0" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/02/28/hello-world/" data-id="byj9xvfg1rzrp8g4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -376,7 +440,7 @@ def index(req):
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02">二月 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -386,6 +450,10 @@ def index(req):
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/03/11/django学习5/">django学习5</a>
+          </li>
         
           <li>
             <a href="/2014/03/09/django学习4/">django学习4</a>
@@ -401,10 +469,6 @@ def index(req):
         
           <li>
             <a href="/2014/03/03/django学习1/">django学习1</a>
-          </li>
-        
-          <li>
-            <a href="/2014/03/01/尝试的第一个博客/">尝试的第一个博客</a>
           </li>
         
       </ul>

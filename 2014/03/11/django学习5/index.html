@@ -3,23 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>django学习1 | 博客</title>
+  <title>django学习5 | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
-<meta name="og:title" content="django学习1">
-<meta name="og:url" content="hyc5656.github.com/2014/03/03/django学习1/">
+<meta name="og:title" content="django学习5">
+<meta name="og:url" content="hyc5656.github.com/2014/03/11/django学习5/">
 <meta name="og:image">
 <meta name="og:site_name" content="博客">
-<meta name="og:description" content="安装django
-下载安装包,运行setup.py即可
-创建django项目
-django-admin.py startproject 项目名
-cd 项目名/
-注意其内产生一个项目名的文件夹和manage.py，使用
-    python manage.py startapp app名
-配置文件
-urls.py中在patterns(&#39;&#39;,后添加
-    url(r&#39;^app">
+<meta name="og:description" content="表单与数据库结合操作
+修改settting.py让django自动生成数据库表与模板目录等，注释里面包含csrf的一行(不注释表单提交时会有csrf错误
+在views.py中添加如下代码
+from django.shortcuts import render_to_response
+from django.http import HttpResponse,HttpResponseRedirect">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="huangyuc">
   
@@ -67,10 +62,10 @@ urls.py中在patterns(&#39;&#39;,后添加
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-django学习1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-django学习5" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/03/03/django学习1/" class="article-date">
-  <time datetime="2014-03-03T08:26:35.000Z" itemprop="datePublished">3月 3 2014</time>
+    <a href="/2014/03/11/django学习5/" class="article-date">
+  <time datetime="2014-03-11T12:51:57.000Z" itemprop="datePublished">3月 11 2014</time>
 </a>
     
   </div>
@@ -81,7 +76,7 @@ urls.py中在patterns(&#39;&#39;,后添加
         
   
     <h1 class="article-title" itemprop="name">
-      django学习1
+      django学习5
     </h1>
   
 
@@ -89,29 +84,38 @@ urls.py中在patterns(&#39;&#39;,后添加
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="-django">安装django</h2>
-<p>下载安装包,运行setup.py即可</p>
-<h2 id="-django-">创建django项目</h2>
-<pre><code>django-admin.py startproject 项目名
-cd 项目名/
-</code></pre><p>注意其内产生一个<em>项目名</em>的文件夹和<em>manage.py</em>，使用
-    python manage.py startapp app名</p>
-<h2 id="-">配置文件</h2>
-<p>urls.py中在patterns(&#39;&#39;,后添加
-    url(r&#39;^app/&#39;,&#39;app名.views.方法名&#39;),
-setting.py 在INSTALLED_APPS中添加app名称
-app名/views.py中添加
-    from django.http import HttpResponse</p>
-<pre><code># Create your views here.
-def index(req):
-    return HttpResponse(&#39;&lt;h1&gt;Hello,world&lt;/h1&gt;&#39;)
-</code></pre><h2 id="-">测试</h2>
-<pre><code>python manage.py runserver
-</code></pre>
+        <h2 id="-">表单与数据库结合操作</h2>
+<p><strong>修改settting.py让django自动生成数据库表与模板目录等，注释里面包含csrf的一行(不注释表单提交时会有csrf错误</strong>
+<strong>在views.py中添加如下代码</strong></p>
+<pre><code>from django.shortcuts import render_to_response
+from django.http import HttpResponse,HttpResponseRedirect
+from django import forms
+from app1.models import User
+
+# Create your views here.
+class uform(forms.Form):
+    username=forms.CharField(max_length=30)
+    img=forms.FileField()
+
+def reg(req):
+    if req.method==&#39;POST&#39;:
+        uf=uform(req.POST,req.FILES)
+        if uf.is_valid():
+            user=User()
+            user.username=uf.cleaned_data[&#39;username&#39;]
+            user.img=uf.cleaned_data[&#39;img&#39;]
+            user.save()
+            return HttpResponseRedirect(r&#39;/success/&#39;)
+    else:
+        uf=uform()
+        return render_to_response(&#39;register.html&#39;,{&#39;f&#39;:uf})
+</code></pre><p>此为主要代码，其中forms模块中的Form类为django为简化表单操作而提供的，成员函数is_valid会根据设置自动检测表单类中的input标签(CharFiled对应为text或textarea等，FileField操作较为复杂，请查阅相关文档),当经过is_valid检测后可根据cleaned_data类字典获取提交的值
+<strong>当然，不使用django自带的Form类也可设计出表单，提交的值通过req.POST类字典获得</strong></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="hyc5656.github.com/2014/03/03/django学习1/" data-id="fqfi3c44qkszahga" class="article-share-link">Share</a>
+      <a data-url="hyc5656.github.com/2014/03/11/django学习5/" data-id="kdandgylllckx2r3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -120,19 +124,10 @@ def index(req):
     
 <nav id="article-nav">
   
-    <a href="/2014/03/04/django学习2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          django学习2
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/03/01/尝试的第一个博客/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/03/09/django学习4/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">尝试的第一个博客</div>
+      <div class="article-nav-title">django学习4</div>
     </a>
   
 </nav>
